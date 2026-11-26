@@ -1,0 +1,135 @@
+{
+  "metadata": {
+    "defaultTitle": "{brand} — Sustainable Agriculture & Innovation",
+    "defaultDescription": "{brand} delivers sustainable agricultural solutions, partner networks, and industry news."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "press": "Press",
+    "network": "Network",
+    "contact": "Contact Us",
+    "skipToContent": "Skip to main content",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu"
+  },
+  "language": {
+    "label": "Language",
+    "switchTo": "Switch language to {language}",
+    "en": "English",
+    "it": "Italiano"
+  },
+  "common": {
+    "viewAll": "View all",
+    "readMore": "Read more",
+    "previous": "Previous",
+    "next": "Next",
+    "apply": "Apply",
+    "close": "Close",
+    "learnMore": "Learn more",
+    "visitWebsite": "Visit website",
+    "backToList": "Back to list",
+    "retry": "Retry",
+    "loading": "Loading...",
+    "pageOf": "Page {page} of {totalPages}",
+    "networkError": "Cannot reach the server. Please check your connection and try again."
+  },
+  "home": {
+    "metaTitle": "Home",
+    "metaDescription": "Discover {brand}, our latest press updates, and career opportunities.",
+    "latestPressTitle": "Latest Press",
+    "latestPressSubtitle": "News, announcements, and insights from our agricultural operations.",
+    "comingSoon": "Homepage banner slider and latest press highlights are coming in the next step."
+  },
+  "about": {
+    "metaTitle": "About Us",
+    "metaDescription": "Learn more about {brand}, our mission, and our commitment to sustainable agriculture.",
+    "title": "About {brand}",
+    "subtitle": "Rooted in agricultural heritage, driven by modern innovation.",
+    "paragraphs": [
+      "{brand} is dedicated to advancing sustainable agriculture through responsible land stewardship, quality-driven production, and long-term partnerships across the agri-food value chain.",
+      "Working closely with growers, agronomic specialists, and institutional networks, we combine traditional expertise with contemporary practices to ensure resilience, traceability, and environmental care.",
+      "This section contains placeholder overview copy and can be updated directly in the language dictionaries whenever final company history and leadership details are ready."
+    ]
+  },
+  "press": {
+    "metaTitle": "Press",
+    "metaDescription": "Read the latest press releases and articles from {brand}.",
+    "title": "Press",
+    "subtitle": "News, stories, and updates from {brand}.",
+    "morePressTitle": "More Press",
+    "backToPress": "Back to Press",
+    "emptyTitle": "No press articles yet",
+    "emptyDescription": "Check back soon for our latest news and announcements.",
+    "comingSoon": "Press articles listing and detail views are coming in Client Prompt 3."
+  },
+  "network": {
+    "metaTitle": "Network",
+    "metaDescription": "Explore the partner organizations and agricultural networks working with {brand}.",
+    "title": "Our Network",
+    "subtitle": "Partner organizations and agricultural networks we collaborate with.",
+    "backToNetwork": "Back to Network",
+    "emptyTitle": "No network partners yet",
+    "emptyDescription": "Information about our partner organizations will be published here soon.",
+    "comingSoon": "Network partners listing and detail pages are coming in Client Prompt 4."
+  },
+  "recruitment": {
+    "metaTitle": "Recruitment",
+    "metaDescription": "Explore current career opportunities at {brand}.",
+    "title": "Recruitment",
+    "subtitle": "Join our team and help shape the future of sustainable agriculture.",
+    "modalTitle": "We Are Hiring",
+    "modalSubtitle": "Explore current open positions at {brand}.",
+    "modalDismissSession": "Don't show again this session",
+    "modalViewAll": "View open positions",
+    "emptyTitle": "No open positions right now",
+    "emptyDescription": "We currently have no active openings. Feel free to reach out through our Contact Us page.",
+    "comingSoon": "Open recruitment positions will be displayed here in Client Prompt 4."
+  },
+  "contact": {
+    "metaTitle": "Contact Us",
+    "metaDescription": "Get in touch with {brand} for inquiries and partnerships.",
+    "title": "Contact Us",
+    "subtitle": "Have a question or partnership inquiry? Send us a message and our team will respond promptly.",
+    "comingSoon": "The interactive Contact Us form will be completed in Client Prompt 5.",
+    "form": {
+      "nameLabel": "Full Name",
+      "namePlaceholder": "Jane Doe",
+      "countryLabel": "Country",
+      "countryPlaceholder": "Select your country",
+      "phoneLabel": "Phone Number",
+      "phonePlaceholder": "+39 06 1234 5678",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "you@example.com",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Tell us how we can help...",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "successMessage": "Thank you for contacting us. We will get back to you soon.",
+      "rateLimitError": "You have sent too many messages recently. Please try again in an hour.",
+      "genericError": "Something went wrong while sending your message. Please try again.",
+      "validation": {
+        "nameMin": "Name must be at least 2 characters.",
+        "nameMax": "Name must not exceed 100 characters.",
+        "countryRequired": "Please select a country.",
+        "phoneInvalid": "Please enter a valid phone number (6 to 20 characters).",
+        "emailInvalid": "Please enter a valid email address.",
+        "messageMin": "Message must be at least 10 characters.",
+        "messageMax": "Message must not exceed 2000 characters."
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Cultivating sustainable growth, quality, and trusted agricultural partnerships.",
+    "quickLinksTitle": "Quick Links",
+    "contactTitle": "Contact",
+    "rights": "All rights reserved."
+  },
+  "errors": {
+    "notFoundTitle": "Page not found",
+    "notFoundDescription": "The page you are looking for does not exist or may have been moved.",
+    "backHome": "Back to Home",
+    "genericTitle": "Something went wrong",
+    "genericDescription": "An unexpected error occurred while loading this page."
+  }
+}

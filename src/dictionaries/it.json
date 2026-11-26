@@ -1,0 +1,135 @@
+{
+  "metadata": {
+    "defaultTitle": "{brand} — Agricoltura Sostenibile e Innovazione",
+    "defaultDescription": "{brand} promuove soluzioni agricole sostenibili, reti di partner e aggiornamenti dal settore."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "Chi Siamo",
+    "press": "Stampa",
+    "network": "Rete",
+    "contact": "Contattaci",
+    "skipToContent": "Vai al contenuto principale",
+    "openMenu": "Apri menu di navigazione",
+    "closeMenu": "Chiudi menu di navigazione"
+  },
+  "language": {
+    "label": "Lingua",
+    "switchTo": "Cambia lingua in {language}",
+    "en": "English",
+    "it": "Italiano"
+  },
+  "common": {
+    "viewAll": "Vedi tutti",
+    "readMore": "Leggi di più",
+    "previous": "Precedente",
+    "next": "Successivo",
+    "apply": "Candidati",
+    "close": "Chiudi",
+    "learnMore": "Scopri di più",
+    "visitWebsite": "Visita il sito",
+    "backToList": "Torna all'elenco",
+    "retry": "Riprova",
+    "loading": "Caricamento...",
+    "pageOf": "Pagina {page} di {totalPages}",
+    "networkError": "Impossibile raggiungere il server. Verifica la connessione e riprova."
+  },
+  "home": {
+    "metaTitle": "Home",
+    "metaDescription": "Scopri {brand}, le ultime notizie stampa e le opportunità di lavoro.",
+    "latestPressTitle": "Ultime dalla Stampa",
+    "latestPressSubtitle": "Notizie, comunicati e approfondimenti dalle nostre attività agricole.",
+    "comingSoon": "Lo slider dei banner in homepage e gli ultimi articoli stampa saranno disponibili nel prossimo passaggio."
+  },
+  "about": {
+    "metaTitle": "Chi Siamo",
+    "metaDescription": "Scopri di più su {brand}, la nostra missione e il nostro impegno per l'agricoltura sostenibile.",
+    "title": "Chi è {brand}",
+    "subtitle": "Radici nella tradizione agricola, sguardo rivolto all'innovazione.",
+    "paragraphs": [
+      "{brand} si impegna a promuovere un'agricoltura sostenibile attraverso una gestione responsabile del territorio, una produzione orientata alla qualità e collaborazioni durature lungo tutta la filiera agroalimentare.",
+      "Lavorando a stretto contatto con produttori, agronomi e reti istituzionali, uniamo competenza tradizionale e metodi moderni per garantire resilienza, tracciabilità e tutela dell'ambiente.",
+      "Questa sezione contiene testi segnaposto generici che possono essere aggiornati direttamente nei dizionari linguistici non appena saranno pronti i testi aziendali definitivi."
+    ]
+  },
+  "press": {
+    "metaTitle": "Stampa",
+    "metaDescription": "Leggi gli ultimi comunicati stampa e articoli di {brand}.",
+    "title": "Stampa",
+    "subtitle": "Notizie, storie e aggiornamenti da {brand}.",
+    "morePressTitle": "Altri Articoli",
+    "backToPress": "Torna alla Stampa",
+    "emptyTitle": "Nessun articolo disponibile",
+    "emptyDescription": "Torna presto per leggere le nostre ultime notizie e comunicati.",
+    "comingSoon": "L'elenco degli articoli stampa e le pagine di dettaglio saranno completati nel passaggio 3."
+  },
+  "network": {
+    "metaTitle": "Rete",
+    "metaDescription": "Esplora le organizzazioni partner e le reti agricole che collaborano con {brand}.",
+    "title": "La Nostra Rete",
+    "subtitle": "Organizzazioni partner e reti agricole con cui collaboriamo.",
+    "backToNetwork": "Torna alla Rete",
+    "emptyTitle": "Nessun partner in elenco",
+    "emptyDescription": "Le informazioni sui nostri partner saranno pubblicate presto in questa sezione.",
+    "comingSoon": "L'elenco dei partner e le pagine di dettaglio saranno completati nel passaggio 4."
+  },
+  "recruitment": {
+    "metaTitle": "Lavora con Noi",
+    "metaDescription": "Scopri le posizioni aperte presso {brand}.",
+    "title": "Lavora con Noi",
+    "subtitle": "Unisciti al nostro team e contribuisci al futuro dell'agricoltura sostenibile.",
+    "modalTitle": "Posizioni Aperte",
+    "modalSubtitle": "Scopri le opportunità professionali attualmente attive in {brand}.",
+    "modalDismissSession": "Non mostrare più in questa sessione",
+    "modalViewAll": "Vedi le posizioni aperte",
+    "emptyTitle": "Nessuna posizione aperta al momento",
+    "emptyDescription": "Al momento non ci sono ricerche attive. Puoi comunque scriverci dalla pagina Contattaci.",
+    "comingSoon": "Le posizioni aperte saranno visualizzate qui nel passaggio 4."
+  },
+  "contact": {
+    "metaTitle": "Contattaci",
+    "metaDescription": "Contatta {brand} per informazioni e collaborazioni.",
+    "title": "Contattaci",
+    "subtitle": "Hai una domanda o una proposta di collaborazione? Scrivici e il nostro team ti risponderà al più presto.",
+    "comingSoon": "Il modulo interattivo Contattaci sarà completato nel passaggio 5.",
+    "form": {
+      "nameLabel": "Nome e Cognome",
+      "namePlaceholder": "Mario Rossi",
+      "countryLabel": "Paese",
+      "countryPlaceholder": "Seleziona il tuo paese",
+      "phoneLabel": "Telefono",
+      "phonePlaceholder": "+39 06 1234 5678",
+      "emailLabel": "Indirizzo Email",
+      "emailPlaceholder": "tu@esempio.it",
+      "messageLabel": "Messaggio",
+      "messagePlaceholder": "Scrivi come possiamo aiutarti...",
+      "submit": "Invia Messaggio",
+      "submitting": "Invio in corso...",
+      "successMessage": "Grazie per averci contattato. Ti risponderemo al più presto.",
+      "rateLimitError": "Hai inviato troppi messaggi di recente. Riprova tra un'ora.",
+      "genericError": "Si è verificato un errore durante l'invio del messaggio. Riprova.",
+      "validation": {
+        "nameMin": "Il nome deve contenere almeno 2 caratteri.",
+        "nameMax": "Il nome non può superare i 100 caratteri.",
+        "countryRequired": "Seleziona un paese.",
+        "phoneInvalid": "Inserisci un numero di telefono valido (da 6 a 20 caratteri).",
+        "emailInvalid": "Inserisci un indirizzo email valido.",
+        "messageMin": "Il messaggio deve contenere almeno 10 caratteri.",
+        "messageMax": "Il messaggio non può superare i 2000 caratteri."
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Coltiviamo crescita sostenibile, qualità e collaborazioni agricole solide.",
+    "quickLinksTitle": "Link Rapidi",
+    "contactTitle": "Contatti",
+    "rights": "Tutti i diritti riservati."
+  },
+  "errors": {
+    "notFoundTitle": "Pagina non trovata",
+    "notFoundDescription": "La pagina che stai cercando non esiste o è stata spostata.",
+    "backHome": "Torna alla Home",
+    "genericTitle": "Si è verificato un errore",
+    "genericDescription": "Si è verificato un errore imprevisto durante il caricamento della pagina."
+  }
+}
