@@ -37,6 +37,8 @@ yarn-error.log*
 # local test scripts & e2e artifacts
 /scripts/
 /e2e/
+/test-results/
+/playwright-report/
 
 # vercel
 .vercel

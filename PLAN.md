@@ -136,7 +136,17 @@ src/
     - `?position=<encoded title>` (`buildApplyContactPath(title)`): `"Apply"` links to `/{lang}/contact?position=<encoded title>` so Client Prompt 5 can prefill the contact message/subject.
   - **Stale-cache note:** Because public detail pages use `'use cache'` (`revalidate: 60`), a recruitment that is deactivated or deleted in the admin dashboard may remain visible until the ~60s revalidation window elapses, after which it resolves to `notFound()`.
   - `src/app/sitemap.ts` includes all localized static routes plus up to 100 Press, 100 Network, and 100 Recruitment items (EN/IT with `alternates` and `lastModified`), falling back cleanly to static routes if the API is offline.
-- **Contact Us (`/[lang]/contact`):** Form with `name`, `country` (localized names via `i18n-iso-countries`, submitting the country name), `phone`, `email`, `message` (min 10), hidden honeypot `website`, localized Zod validation errors, loading state, double-submit guard, success/error toasts, and friendly 429 message.
+- **Contact Us (`/[lang]/contact`):**
+  - Two-column layout (`PageHero`, left contact details from `siteConfig` with `tel:`/`mailto:` and non-empty social links, right `ContactForm`).
+  - `ContactForm` (`src/components/contact/ContactForm.tsx`) uses `react-hook-form` + localized Zod validation + TanStack Query `useMutation` (`submitContact`).
+  - **Country list decision:** Uses `i18n-iso-countries` (EN/IT locales registered inside `ContactForm`, sorted with `Intl.Collator(lang)`). Displays country names in the active UI language (`Italia` / `Italy`) while always submitting the **English** country name to the API so admin records stay consistent.
+  - **Prefill contract:** Reads `?position=<title>` inside `<Suspense>`, sanitizes control chars (max 200 chars), prefills the message once without overwriting user edits, and shows an `"Applying for: {title}"` banner.
+  - **Honeypot & error handling:** Hidden off-screen `website` field (`tabIndex={-1}`, `aria-hidden`), double-submit prevention, 400 `errorSources` mapped to field errors, friendly 429 rate-limit message, network-error message, and generic 5xx fallback (never exposing raw server messages).
+- **SEO & Soft-404 Notes:**
+  - Home emits `Organization` and `WebSite` JSON-LD (`<` escaped as `\u003c`).
+  - `src/app/[lang]/opengraph-image.tsx` generates a localized 1200×630 branded OpenGraph/Twitter image for routes without a specific article/partner image.
+  - Removed `src/app/[lang]/loading.tsx` so no implicit `<Suspense>` wraps detail pages (`press/[id]`, `network/[id]`, `recruitment/[id]`), while each page keeps inline `<Suspense>` around streaming sections. Verified on `next start`: unknown routes (`/[lang]/[...slug]`) return true HTTP `404` and root unknown paths return `307` to `/en/...`; however, under Next.js 16 `cacheComponents: true` + `partialPrefetching: true`, unlisted dynamic `[id]` routes stream the PPR static shell with HTTP `200` before `notFound()` runs, emitting `<meta name="robots" content="noindex">` and the localized `not-found.tsx` UI.
+  - Brand token `--brand-accent-strong` tuned to `#fbbf24` (`5.46:1` contrast on `--brand-primary` `#14532d`, passing WCAG AA for normal text).
 
 ---
 
@@ -147,7 +157,7 @@ src/
 | **Client 2** | Home Page (Embla banner slider, 3 latest Press + View all, glass recruitment modal) | No git | **Done** |
 | **Client 3** | About Us polish, Press list (search + pagination), Press details (`More Press`, JSON-LD), Sitemap | **First commit & push** | **Done** |
 | **Client 4** | Network list + details, Recruitment list (accordion, `?open=`) + details, Sitemap update | Commit & push | **Done** |
-| **Client 5** | Contact Us page, SEO/sitemap polish, performance QA, full live test, final report | Commit & push | Pending |
+| **Client 5** | Contact Us page, soft-404 fix, SEO/OG/JSON-LD, contrast/perf QA, Playwright E2E, final docs | Commit & push | **Done** |
 
 ---
 

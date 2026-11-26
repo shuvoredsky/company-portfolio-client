@@ -48,8 +48,7 @@
       "slideLabel": "Banner {current} of {total}"
     },
     "latestPressTitle": "Latest Press",
-    "latestPressSubtitle": "News, announcements, and insights from our agricultural operations.",
-    "comingSoon": "Homepage banner slider and latest press highlights are coming in the next step."
+    "latestPressSubtitle": "News, announcements, and insights from our agricultural operations."
   },
   "about": {
     "metaTitle": "About Us",
@@ -163,10 +162,18 @@
   },
   "contact": {
     "metaTitle": "Contact Us",
-    "metaDescription": "Get in touch with {brand} for inquiries and partnerships.",
+    "metaDescription": "Get in touch with {brand} for agricultural inquiries, partner networks, and career applications.",
     "title": "Contact Us",
     "subtitle": "Have a question or partnership inquiry? Send us a message and our team will respond promptly.",
-    "comingSoon": "The interactive Contact Us form will be completed in Client Prompt 5.",
+    "infoTitle": "Contact Information",
+    "infoSubtitle": "Reach out directly or send us a message using the contact form.",
+    "addressLabel": "Address",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "socialLabel": "Follow Us",
+    "formTitle": "Send Us a Message",
+    "applyingFor": "Applying for: {title}",
+    "prefillMessage": "I am interested in the position: {title}\n\n",
     "form": {
       "nameLabel": "Full Name",
       "namePlaceholder": "Jane Doe",
@@ -178,16 +185,21 @@
       "emailPlaceholder": "you@example.com",
       "messageLabel": "Message",
       "messagePlaceholder": "Tell us how we can help...",
+      "messageCounter": "{count} / {max}",
       "submit": "Send Message",
       "submitting": "Sending...",
+      "thankYouTitle": "Message Sent",
       "successMessage": "Thank you for contacting us. We will get back to you soon.",
+      "sendAnother": "Send another message",
       "rateLimitError": "You have sent too many messages recently. Please try again in an hour.",
+      "networkError": "Cannot reach the server. Please check your connection and try again.",
       "genericError": "Something went wrong while sending your message. Please try again.",
       "validation": {
         "nameMin": "Name must be at least 2 characters.",
         "nameMax": "Name must not exceed 100 characters.",
         "countryRequired": "Please select a country.",
         "phoneInvalid": "Please enter a valid phone number (6 to 20 characters).",
+        "phonePattern": "Phone number may only contain digits, spaces, +, -, and parentheses.",
         "emailInvalid": "Please enter a valid email address.",
         "messageMin": "Message must be at least 10 characters.",
         "messageMax": "Message must not exceed 2000 characters."

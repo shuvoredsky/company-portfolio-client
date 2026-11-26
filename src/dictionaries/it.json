@@ -48,8 +48,7 @@
       "slideLabel": "Banner {current} di {total}"
     },
     "latestPressTitle": "Ultime dalla Stampa",
-    "latestPressSubtitle": "Notizie, comunicati e approfondimenti dalle nostre attività agricole.",
-    "comingSoon": "Lo slider dei banner in homepage e gli ultimi articoli stampa saranno disponibili nel prossimo passaggio."
+    "latestPressSubtitle": "Notizie, comunicati e approfondimenti dalle nostre attività agricole."
   },
   "about": {
     "metaTitle": "Chi Siamo",
@@ -163,10 +162,18 @@
   },
   "contact": {
     "metaTitle": "Contattaci",
-    "metaDescription": "Contatta {brand} per informazioni e collaborazioni.",
+    "metaDescription": "Contatta {brand} per informazioni agricole, reti di partner e candidature.",
     "title": "Contattaci",
     "subtitle": "Hai una domanda o una proposta di collaborazione? Scrivici e il nostro team ti risponderà al più presto.",
-    "comingSoon": "Il modulo interattivo Contattaci sarà completato nel passaggio 5.",
+    "infoTitle": "Informazioni di Contatto",
+    "infoSubtitle": "Contattaci direttamente oppure inviaci un messaggio tramite il modulo.",
+    "addressLabel": "Indirizzo",
+    "phoneLabel": "Telefono",
+    "emailLabel": "Email",
+    "socialLabel": "Seguici",
+    "formTitle": "Inviaci un Messaggio",
+    "applyingFor": "Candidatura per: {title}",
+    "prefillMessage": "Sono interessato alla posizione: {title}\n\n",
     "form": {
       "nameLabel": "Nome e Cognome",
       "namePlaceholder": "Mario Rossi",
@@ -178,16 +185,21 @@
       "emailPlaceholder": "tu@esempio.it",
       "messageLabel": "Messaggio",
       "messagePlaceholder": "Scrivi come possiamo aiutarti...",
+      "messageCounter": "{count} / {max}",
       "submit": "Invia Messaggio",
       "submitting": "Invio in corso...",
+      "thankYouTitle": "Messaggio Inviato",
       "successMessage": "Grazie per averci contattato. Ti risponderemo al più presto.",
+      "sendAnother": "Invia un altro messaggio",
       "rateLimitError": "Hai inviato troppi messaggi di recente. Riprova tra un'ora.",
+      "networkError": "Impossibile raggiungere il server. Verifica la connessione e riprova.",
       "genericError": "Si è verificato un errore durante l'invio del messaggio. Riprova.",
       "validation": {
         "nameMin": "Il nome deve contenere almeno 2 caratteri.",
         "nameMax": "Il nome non può superare i 100 caratteri.",
         "countryRequired": "Seleziona un paese.",
         "phoneInvalid": "Inserisci un numero di telefono valido (da 6 a 20 caratteri).",
+        "phonePattern": "Il numero di telefono può contenere solo cifre, spazi, +, - e parentesi.",
         "emailInvalid": "Inserisci un indirizzo email valido.",
         "messageMin": "Il messaggio deve contenere almeno 10 caratteri.",
         "messageMax": "Il messaggio non può superare i 2000 caratteri."

@@ -42,7 +42,14 @@ export function buildPageMetadata({
   const enPath = buildLocalizedPath('en', path);
   const itPath = buildLocalizedPath('it', path);
 
-  const ogImages = imageUrl ? [{ url: imageUrl, alt: cleanTitle }] : undefined;
+  const resolvedImageUrl = imageUrl || `${siteConfig.url}/${lang}/opengraph-image`;
+  const ogImages = [
+    {
+      url: resolvedImageUrl,
+      ...(imageUrl ? {} : { width: 1200, height: 630 }),
+      alt: cleanTitle,
+    },
+  ];
 
   return {
     title: cleanTitle,
@@ -65,7 +72,7 @@ export function buildPageMetadata({
             locale: lang === 'it' ? 'it_IT' : 'en_GB',
             type: 'article',
             ...(publishedTime ? { publishedTime } : {}),
-            ...(ogImages ? { images: ogImages } : {}),
+            images: ogImages,
           }
         : {
             title: `${cleanTitle} | ${siteConfig.brandName}`,
@@ -74,18 +81,14 @@ export function buildPageMetadata({
             siteName: siteConfig.brandName,
             locale: lang === 'it' ? 'it_IT' : 'en_GB',
             type: 'website',
-            ...(ogImages ? { images: ogImages } : {}),
+            images: ogImages,
           },
-    ...(imageUrl
-      ? {
-          twitter: {
-            card: 'summary_large_image',
-            title: `${cleanTitle} | ${siteConfig.brandName}`,
-            description: cleanDescription,
-            images: [imageUrl],
-          },
-        }
-      : {}),
+    twitter: {
+      card: 'summary_large_image',
+      title: `${cleanTitle} | ${siteConfig.brandName}`,
+      description: cleanDescription,
+      images: [resolvedImageUrl],
+    },
     ...(noIndex
       ? {
           robots: {
