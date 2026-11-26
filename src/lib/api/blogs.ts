@@ -23,3 +23,4 @@ export async function getPressById(
   const { data } = await apiClient.get<ApiResponse<PressItem>>(`/blogs/${id}`);
   return data;
 }
+

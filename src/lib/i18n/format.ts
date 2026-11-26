@@ -33,3 +33,4 @@ export function formatDate(
   if (Number.isNaN(date.getTime())) return '—';
   return new Intl.DateTimeFormat(INTL_LOCALE_MAP[lang], options).format(date);
 }
+

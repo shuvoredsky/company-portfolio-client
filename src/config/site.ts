@@ -27,3 +27,4 @@ export const siteConfig = {
 
 export type Locale = (typeof siteConfig.locales)[number];
 export type SiteConfig = typeof siteConfig;
+

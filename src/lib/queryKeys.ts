@@ -21,3 +21,4 @@ export const queryKeys = {
     detail: (id: string) => ['recruitments', 'detail', id] as const,
   },
 } as const;
+

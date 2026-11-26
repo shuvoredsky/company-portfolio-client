@@ -36,3 +36,4 @@ export const env = {
   apiUrl: parsed.data.NEXT_PUBLIC_API_URL.replace(/\/+$/, ''),
   siteUrl: parsed.data.NEXT_PUBLIC_SITE_URL.replace(/\/+$/, ''),
 } as const;
+

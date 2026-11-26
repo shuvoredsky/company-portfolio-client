@@ -9,3 +9,4 @@ export async function submitContact(
   >('/contacts', payload);
   return data;
 }
+

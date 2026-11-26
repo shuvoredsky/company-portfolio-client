@@ -15,3 +15,4 @@ export const mainNavItems: readonly MainNavItem[] = [
   { key: 'network', href: '/network' },
   { key: 'contact', href: '/contact' },
 ] as const;
+

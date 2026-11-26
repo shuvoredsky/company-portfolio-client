@@ -24,3 +24,4 @@ export async function getRecruitmentById(
   );
   return data;
 }
+

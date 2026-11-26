@@ -43,3 +43,4 @@ export function Providers({ lang, dict, children }: ProvidersProps) {
     </QueryClientProvider>
   );
 }
+

@@ -25,3 +25,4 @@ export function stripLocalePrefix(pathname: string): string {
   }
   return pathname || '/';
 }
+

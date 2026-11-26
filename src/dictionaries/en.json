@@ -32,36 +32,83 @@
     "retry": "Retry",
     "loading": "Loading...",
     "pageOf": "Page {page} of {totalPages}",
+    "paginationLabel": "Pagination",
+    "goToPage": "Go to page {page}",
     "networkError": "Cannot reach the server. Please check your connection and try again."
   },
   "home": {
     "metaTitle": "Home",
     "metaDescription": "Discover {brand}, our latest press updates, and career opportunities.",
+    "heroFallbackSubtitle": "Sustainable agricultural excellence, trusted partnerships, and forward-looking innovation.",
+    "carousel": {
+      "label": "Featured banners",
+      "previous": "Previous banner",
+      "next": "Next banner",
+      "goToSlide": "Go to banner {index}",
+      "slideLabel": "Banner {current} of {total}"
+    },
     "latestPressTitle": "Latest Press",
     "latestPressSubtitle": "News, announcements, and insights from our agricultural operations.",
     "comingSoon": "Homepage banner slider and latest press highlights are coming in the next step."
   },
   "about": {
     "metaTitle": "About Us",
-    "metaDescription": "Learn more about {brand}, our mission, and our commitment to sustainable agriculture.",
+    "metaDescription": "Learn more about {brand}, our mission, vision, values, and commitment to sustainable agriculture.",
     "title": "About {brand}",
-    "subtitle": "Rooted in agricultural heritage, driven by modern innovation.",
-    "paragraphs": [
-      "{brand} is dedicated to advancing sustainable agriculture through responsible land stewardship, quality-driven production, and long-term partnerships across the agri-food value chain.",
-      "Working closely with growers, agronomic specialists, and institutional networks, we combine traditional expertise with contemporary practices to ensure resilience, traceability, and environmental care.",
-      "This section contains placeholder overview copy and can be updated directly in the language dictionaries whenever final company history and leadership details are ready."
-    ]
+    "subtitle": "Rooted in agricultural heritage, driven by modern innovation and responsible stewardship.",
+    "whoWeAreTitle": "Who We Are",
+    "whoWeAreParagraph1": "{brand} is dedicated to advancing sustainable agriculture through responsible land management, quality-driven production, and dependable partnerships across the agri-food value chain.",
+    "whoWeAreParagraph2": "Working closely with growers, agronomic specialists, and partner organizations, we combine proven field expertise with contemporary practices to ensure resilience, traceability, and long-term environmental care.",
+    "missionTitle": "Our Mission",
+    "missionDescription": "To cultivate reliable, sustainable agricultural solutions that support local communities, protect natural resources, and deliver consistent quality from field to market.",
+    "visionTitle": "Our Vision",
+    "visionDescription": "To build a resilient, transparent agri-food ecosystem where ecological responsibility and modern agronomic innovation grow hand in hand.",
+    "valuesTitle": "Our Values",
+    "valuesSubtitle": "The principles that guide our daily work in the field and with our partners.",
+    "values": {
+      "sustainability": {
+        "title": "Sustainability",
+        "description": "Respecting soil health, biodiversity, and water resources for future generations."
+      },
+      "quality": {
+        "title": "Quality & Traceability",
+        "description": "Maintaining rigorous standards and clear oversight at every stage of production."
+      },
+      "community": {
+        "title": "Partnership",
+        "description": "Fostering lasting, transparent relationships with growers, clients, and institutions."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Adopting practical agronomic technologies that improve efficiency and resilience."
+      }
+    },
+    "ctaTitle": "Interested in Working Together?",
+    "ctaDescription": "Reach out to {brand} to learn more about our agricultural operations, partner network, or collaboration opportunities.",
+    "ctaButton": "Get in touch"
   },
   "press": {
     "metaTitle": "Press",
     "metaDescription": "Read the latest press releases and articles from {brand}.",
     "title": "Press",
     "subtitle": "News, stories, and updates from {brand}.",
+    "searchLabel": "Search press articles",
+    "searchPlaceholder": "Search press by title...",
+    "searchClear": "Clear search",
+    "searchSubmit": "Search",
+    "noResultsTitle": "No results for \"{query}\"",
+    "noResultsDescription": "Try a different keyword or clear the search filter to view all articles.",
+    "clearSearchAction": "Clear search",
     "morePressTitle": "More Press",
+    "viewAllPress": "View all Press",
     "backToPress": "Back to Press",
+    "breadcrumbLabel": "Breadcrumb",
     "emptyTitle": "No press articles yet",
     "emptyDescription": "Check back soon for our latest news and announcements.",
-    "comingSoon": "Press articles listing and detail views are coming in Client Prompt 3."
+    "errorTitle": "Unable to load press articles",
+    "errorDescription": "We could not load the latest press updates right now. Please try again shortly.",
+    "detailErrorTitle": "Unable to load this article",
+    "detailErrorDescription": "We could not load this press article right now. Please try again shortly."
   },
   "network": {
     "metaTitle": "Network",

@@ -13,3 +13,4 @@ const dictionaries: Record<Locale, Dictionary> = {
 export function getDictionary(lang: Locale): Dictionary {
   return dictionaries[lang];
 }
+

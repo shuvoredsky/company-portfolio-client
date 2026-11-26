@@ -32,36 +32,83 @@
     "retry": "Riprova",
     "loading": "Caricamento...",
     "pageOf": "Pagina {page} di {totalPages}",
+    "paginationLabel": "Paginazione",
+    "goToPage": "Vai alla pagina {page}",
     "networkError": "Impossibile raggiungere il server. Verifica la connessione e riprova."
   },
   "home": {
     "metaTitle": "Home",
     "metaDescription": "Scopri {brand}, le ultime notizie stampa e le opportunità di lavoro.",
+    "heroFallbackSubtitle": "Eccellenza agricola sostenibile, collaborazioni solide e innovazione orientata al futuro.",
+    "carousel": {
+      "label": "Banner in evidenza",
+      "previous": "Banner precedente",
+      "next": "Banner successivo",
+      "goToSlide": "Vai al banner {index}",
+      "slideLabel": "Banner {current} di {total}"
+    },
     "latestPressTitle": "Ultime dalla Stampa",
     "latestPressSubtitle": "Notizie, comunicati e approfondimenti dalle nostre attività agricole.",
     "comingSoon": "Lo slider dei banner in homepage e gli ultimi articoli stampa saranno disponibili nel prossimo passaggio."
   },
   "about": {
     "metaTitle": "Chi Siamo",
-    "metaDescription": "Scopri di più su {brand}, la nostra missione e il nostro impegno per l'agricoltura sostenibile.",
+    "metaDescription": "Scopri di più su {brand}, la nostra missione, la visione, i valori e il nostro impegno per l'agricoltura sostenibile.",
     "title": "Chi è {brand}",
-    "subtitle": "Radici nella tradizione agricola, sguardo rivolto all'innovazione.",
-    "paragraphs": [
-      "{brand} si impegna a promuovere un'agricoltura sostenibile attraverso una gestione responsabile del territorio, una produzione orientata alla qualità e collaborazioni durature lungo tutta la filiera agroalimentare.",
-      "Lavorando a stretto contatto con produttori, agronomi e reti istituzionali, uniamo competenza tradizionale e metodi moderni per garantire resilienza, tracciabilità e tutela dell'ambiente.",
-      "Questa sezione contiene testi segnaposto generici che possono essere aggiornati direttamente nei dizionari linguistici non appena saranno pronti i testi aziendali definitivi."
-    ]
+    "subtitle": "Radici nella tradizione agricola, sguardo rivolto all'innovazione e alla cura del territorio.",
+    "whoWeAreTitle": "Chi Siamo",
+    "whoWeAreParagraph1": "{brand} si impegna a promuovere un'agricoltura sostenibile attraverso una gestione responsabile del territorio, una produzione orientata alla qualità e collaborazioni solide lungo tutta la filiera agroalimentare.",
+    "whoWeAreParagraph2": "Lavorando a stretto contatto con produttori, agronomi e organizzazioni partner, uniamo l'esperienza sul campo alle pratiche più moderne per garantire resilienza, tracciabilità e tutela ambientale nel lungo periodo.",
+    "missionTitle": "La Nostra Missione",
+    "missionDescription": "Sviluppare soluzioni agricole affidabili e sostenibili che sostengano le comunità locali, proteggano le risorse naturali e garantiscano una qualità costante dal campo al mercato.",
+    "visionTitle": "La Nostra Visione",
+    "visionDescription": "Costruire un ecosistema agroalimentare resiliente e trasparente, in cui responsabilità ecologica e innovazione agronomica crescano insieme.",
+    "valuesTitle": "I Nostri Valori",
+    "valuesSubtitle": "I principi che guidano il nostro lavoro quotidiano sul campo e con i nostri partner.",
+    "values": {
+      "sustainability": {
+        "title": "Sostenibilità",
+        "description": "Tutela della fertilità del suolo, della biodiversità e delle risorse idriche per le generazioni future."
+      },
+      "quality": {
+        "title": "Qualità e Tracciabilità",
+        "description": "Standard rigorosi e controllo trasparente in ogni fase del processo produttivo."
+      },
+      "community": {
+        "title": "Collaborazione",
+        "description": "Relazioni durature e trasparenti con produttori, clienti e istituzioni del settore."
+      },
+      "innovation": {
+        "title": "Innovazione",
+        "description": "Adozione di soluzioni agronomiche concrete per migliorare efficienza e resilienza."
+      }
+    },
+    "ctaTitle": "Vuoi Collaborare con Noi?",
+    "ctaDescription": "Contatta {brand} per scoprire di più sulle nostre attività agricole, sulla rete di partner o su nuove opportunità di collaborazione.",
+    "ctaButton": "Contattaci"
   },
   "press": {
     "metaTitle": "Stampa",
     "metaDescription": "Leggi gli ultimi comunicati stampa e articoli di {brand}.",
     "title": "Stampa",
     "subtitle": "Notizie, storie e aggiornamenti da {brand}.",
+    "searchLabel": "Cerca articoli stampa",
+    "searchPlaceholder": "Cerca per titolo...",
+    "searchClear": "Cancella ricerca",
+    "searchSubmit": "Cerca",
+    "noResultsTitle": "Nessun risultato per \"{query}\"",
+    "noResultsDescription": "Prova con un'altra parola chiave o rimuovi il filtro di ricerca per vedere tutti gli articoli.",
+    "clearSearchAction": "Rimuovi ricerca",
     "morePressTitle": "Altri Articoli",
+    "viewAllPress": "Vedi tutta la Stampa",
     "backToPress": "Torna alla Stampa",
+    "breadcrumbLabel": "Percorso di navigazione",
     "emptyTitle": "Nessun articolo disponibile",
     "emptyDescription": "Torna presto per leggere le nostre ultime notizie e comunicati.",
-    "comingSoon": "L'elenco degli articoli stampa e le pagine di dettaglio saranno completati nel passaggio 3."
+    "errorTitle": "Impossibile caricare gli articoli",
+    "errorDescription": "Al momento non è stato possibile caricare le ultime notizie stampa. Riprova tra poco.",
+    "detailErrorTitle": "Impossibile caricare l'articolo",
+    "detailErrorDescription": "Al momento non è stato possibile caricare questo articolo stampa. Riprova tra poco."
   },
   "network": {
     "metaTitle": "Rete",

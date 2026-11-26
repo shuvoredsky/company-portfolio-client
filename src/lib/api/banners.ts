@@ -5,3 +5,4 @@ export async function getBanners(): Promise<ApiResponse<PublicBanner[]>> {
   const { data } = await apiClient.get<ApiResponse<PublicBanner[]>>('/banners');
   return data;
 }
+

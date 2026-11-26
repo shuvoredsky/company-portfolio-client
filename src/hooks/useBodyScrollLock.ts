@@ -12,3 +12,4 @@ export function useBodyScrollLock(locked: boolean): void {
     };
   }, [locked]);
 }
+
