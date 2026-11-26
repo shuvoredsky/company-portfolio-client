@@ -36,9 +36,11 @@ src/
 │       ├── error.tsx
 │       └── loading.tsx
 ├── components/
-│   ├── common/                   # Brand, LanguageSwitcher, LocaleLink, Container, Section, SectionHeading, PageHero, Pagination, SafeImage
+│   ├── common/                   # Brand, LanguageSwitcher, LocaleLink, Container, Section, SectionHeading, PageHero, Pagination, SearchBox, SafeImage
 │   ├── home/                     # BannerSection, BannerSlider, LatestPressSection, RecruitmentModal, RecruitmentModalLoader
-│   ├── press/                    # PressCard, SearchBox
+│   ├── press/                    # PressCard
+│   ├── network/                  # NetworkCard
+│   ├── recruitment/              # RecruitmentAccordion
 │   ├── ui/                       # Button, Input, Label, Textarea, Select, Card, Skeleton, Spinner, Badge, Modal (default + glass)
 │   ├── layout/                   # Navbar, MobileMenu, Footer
 │   └── providers/                # Providers (QueryClientProvider, LanguageProvider, Toaster)
@@ -123,8 +125,17 @@ src/
   - List page uses `PageHero`, URL-driven debounced `SearchBox` (`?search=<query>`, resets page to 1 via `router.replace(..., { scroll: false })`, also supports native `<form>` submit), server-cached `getCachedPressList(page, 9, search)` wrapped in `<Suspense>`, and link-based `Pagination` (`?page=<n>&search=<query>`, omits `page=1`). Invalid `page` values (`0`, `-1`, non-numeric) clamp to `1`; requests beyond `totalPages` redirect to the last valid page via Next.js `redirect()`. Search result URLs emit `robots: noindex, nofollow` and canonical to `/press`.
   - Detail page validates 24-hex ObjectId before fetching `getCachedPressById(id)` (tagged `['press', 'press-${id}']`). Invalid IDs or 404s call `notFound()`. Renders accessible breadcrumb, priority 16:9 `SafeImage`, plain-text description (`whitespace-pre-line break-words max-w-3xl`), Article JSON-LD (`<` escaped as `\u003c`), OpenGraph/Twitter metadata, and a `<Suspense>`-isolated `MorePressSection` (up to 3 other latest items, hidden if none).
   - `src/app/sitemap.ts` includes all localized static routes plus up to 100 Press items (EN/IT with `alternates` and `lastModified`), falling back cleanly to static routes if the API is offline.
-- **Network (`/[lang]/network` & `/[lang]/network/[id]`):** Partner cards and detail page with optional `"Visit website"` external link (`http`/`https` only).
-- **Recruitment (`/[lang]/recruitment`):** Active openings list with expandable/detail view (linked from Home modal, not in navbar).
+- **Network (`/[lang]/network` & `/[lang]/network/[id]`):**
+  - List page reuses `PageHero`, generic `SearchBox` (`src/components/common/SearchBox.tsx`), `getCachedNetworkList(page, 9, search)` (tagged `'networks'`), `NetworkCard` (non-interactive external-site badge, no nested links), and `Pagination` (same invalid-page clamping, out-of-range redirect, and `noindex` + base canonical rules as Press).
+  - Detail page validates 24-hex ObjectId, fetches `getCachedNetworkById(id)` (tagged `['networks', 'network-${id}']`), validates `externalUrl` via `parseSafeExternalUrl` (`src/lib/url.ts`, strictly `http:`/`https:` only) before rendering `"Visit website"` (`target="_blank" rel="noopener noreferrer"` with hostname new-tab `aria-label`), emits Organization JSON-LD (`<` escaped as `\u003c`), and renders `<Suspense>`-isolated `MoreNetworksSection` (up to 3 other items).
+- **Recruitment (`/[lang]/recruitment` & `/[lang]/recruitment/[id]`):**
+  - Active openings only (`getCachedRecruitmentList(page, 10)` tagged `'recruitments'`, `getCachedRecruitmentById(id)` tagged `['recruitments', 'recruitment-${id}']` returning `notFound` if missing or `!isActive`). Intentionally excluded from Navbar and Footer quick links.
+  - **Accordion choice:** Client `RecruitmentAccordion` uses accessible `<button aria-expanded aria-controls>` + `role="region"` with CSS grid-row transitions (`motion-reduce:transition-none`) while keeping full plain-text descriptions in the SSR DOM for search engine indexing.
+  - **Deep-link contracts:**
+    - `?open=<id>` (`buildRecruitmentItemPath(id)`): validated as 24-hex ObjectId; if matching an item on the current page, that opening renders expanded by default, highlighted, and scrolled into view (`scroll-mt-24`, respecting `prefers-reduced-motion`). Invalid/unmatched IDs are ignored silently.
+    - `?position=<encoded title>` (`buildApplyContactPath(title)`): `"Apply"` links to `/{lang}/contact?position=<encoded title>` so Client Prompt 5 can prefill the contact message/subject.
+  - **Stale-cache note:** Because public detail pages use `'use cache'` (`revalidate: 60`), a recruitment that is deactivated or deleted in the admin dashboard may remain visible until the ~60s revalidation window elapses, after which it resolves to `notFound()`.
+  - `src/app/sitemap.ts` includes all localized static routes plus up to 100 Press, 100 Network, and 100 Recruitment items (EN/IT with `alternates` and `lastModified`), falling back cleanly to static routes if the API is offline.
 - **Contact Us (`/[lang]/contact`):** Form with `name`, `country` (localized names via `i18n-iso-countries`, submitting the country name), `phone`, `email`, `message` (min 10), hidden honeypot `website`, localized Zod validation errors, loading state, double-submit guard, success/error toasts, and friendly 429 message.
 
 ---
@@ -135,7 +146,7 @@ src/
 | **Client 1** | Setup, PLAN, i18n (`en`/`it` + `proxy.ts`), Colors, Navbar, Footer, UI Primitives, API Layer | No git | **Done** |
 | **Client 2** | Home Page (Embla banner slider, 3 latest Press + View all, glass recruitment modal) | No git | **Done** |
 | **Client 3** | About Us polish, Press list (search + pagination), Press details (`More Press`, JSON-LD), Sitemap | **First commit & push** | **Done** |
-| **Client 4** | Network list + details, Recruitment page | Commit & push | Pending |
+| **Client 4** | Network list + details, Recruitment list (accordion, `?open=`) + details, Sitemap update | Commit & push | **Done** |
 | **Client 5** | Contact Us page, SEO/sitemap polish, performance QA, full live test, final report | Commit & push | Pending |
 
 ---

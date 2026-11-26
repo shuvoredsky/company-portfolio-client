@@ -1,11 +1,15 @@
 import { cacheLife, cacheTag } from 'next/cache';
 import { getBanners } from './banners';
 import { getPressById, getPressList } from './blogs';
+import { getNetworkById, getNetworks } from './networks';
+import { getRecruitmentById, getRecruitments } from './recruitments';
 import {
   ApiError,
+  type NetworkItem,
   type PaginationMeta,
   type PressItem,
   type PublicBanner,
+  type RecruitmentItem,
 } from './types';
 
 export interface CachedResult<T> {
@@ -31,6 +35,10 @@ export function isValidObjectId(id: string): boolean {
   return OBJECT_ID_REGEX.test(id);
 }
 
+// ---------------------------------------------------------------------------
+// Banners
+// ---------------------------------------------------------------------------
+
 export async function getCachedBanners(): Promise<CachedResult<PublicBanner[]>> {
   'use cache';
   cacheLife({ stale: 30, revalidate: 60, expire: 3600 });
@@ -43,6 +51,10 @@ export async function getCachedBanners(): Promise<CachedResult<PublicBanner[]>> 
     return { data: [], error: true };
   }
 }
+
+// ---------------------------------------------------------------------------
+// Press (Backend: /blogs)
+// ---------------------------------------------------------------------------
 
 export async function getCachedLatestPress(
   limit = 3,
@@ -132,6 +144,187 @@ export async function getCachedPressSitemapItems(): Promise<PressItem[]> {
 
     if (totalPages >= 2) {
       const second = await getPressList({ page: 2, limit: 50 });
+      items.push(...(second.data ?? []));
+    }
+
+    return items;
+  } catch {
+    return [];
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Networks
+// ---------------------------------------------------------------------------
+
+export async function getCachedLatestNetworks(
+  limit = 4,
+): Promise<CachedResult<NetworkItem[]>> {
+  'use cache';
+  cacheLife({ stale: 30, revalidate: 60, expire: 3600 });
+  cacheTag('networks');
+
+  try {
+    const res = await getNetworks({ page: 1, limit });
+    return { data: res.data ?? [], error: false };
+  } catch {
+    return { data: [], error: true };
+  }
+}
+
+export async function getCachedNetworkList(
+  page: number,
+  limit: number,
+  search: string,
+): Promise<CachedListResult<NetworkItem>> {
+  'use cache';
+  cacheLife({ stale: 30, revalidate: 60, expire: 3600 });
+  cacheTag('networks');
+
+  const safePage = Number.isInteger(page) && page >= 1 ? page : 1;
+  const safeLimit = Number.isInteger(limit) && limit >= 1 && limit <= 50 ? limit : 9;
+  const safeSearch = search.trim().slice(0, 100);
+
+  try {
+    const res = await getNetworks({
+      page: safePage,
+      limit: safeLimit,
+      search: safeSearch || undefined,
+    });
+    const items = res.data ?? [];
+    const meta: PaginationMeta = res.meta ?? {
+      page: safePage,
+      limit: safeLimit,
+      total: items.length,
+      totalPages: items.length > 0 ? 1 : 0,
+    };
+    return { data: items, meta, error: false };
+  } catch {
+    return {
+      data: [],
+      meta: { page: safePage, limit: safeLimit, total: 0, totalPages: 0 },
+      error: true,
+    };
+  }
+}
+
+export async function getCachedNetworkById(
+  id: string,
+): Promise<CachedItemResult<NetworkItem>> {
+  'use cache';
+  cacheLife({ stale: 30, revalidate: 60, expire: 3600 });
+  cacheTag('networks', `network-${id}`);
+
+  if (!isValidObjectId(id)) {
+    return { data: null, notFound: true, error: false };
+  }
+
+  try {
+    const res = await getNetworkById(id);
+    if (!res.data) {
+      return { data: null, notFound: true, error: false };
+    }
+    return { data: res.data, notFound: false, error: false };
+  } catch (err) {
+    if (err instanceof ApiError && (err.status === 404 || err.status === 400)) {
+      return { data: null, notFound: true, error: false };
+    }
+    return { data: null, notFound: false, error: true };
+  }
+}
+
+export async function getCachedNetworkSitemapItems(): Promise<NetworkItem[]> {
+  'use cache';
+  cacheLife({ stale: 30, revalidate: 60, expire: 3600 });
+  cacheTag('networks');
+
+  try {
+    const first = await getNetworks({ page: 1, limit: 50 });
+    const items = [...(first.data ?? [])];
+    const totalPages = first.meta?.totalPages ?? 1;
+
+    if (totalPages >= 2) {
+      const second = await getNetworks({ page: 2, limit: 50 });
+      items.push(...(second.data ?? []));
+    }
+
+    return items;
+  } catch {
+    return [];
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Recruitments (active only on public site)
+// ---------------------------------------------------------------------------
+
+export async function getCachedRecruitmentList(
+  page: number,
+  limit = 10,
+): Promise<CachedListResult<RecruitmentItem>> {
+  'use cache';
+  cacheLife({ stale: 30, revalidate: 60, expire: 3600 });
+  cacheTag('recruitments');
+
+  const safePage = Number.isInteger(page) && page >= 1 ? page : 1;
+  const safeLimit = Number.isInteger(limit) && limit >= 1 && limit <= 50 ? limit : 10;
+
+  try {
+    const res = await getRecruitments({ page: safePage, limit: safeLimit });
+    const items = res.data ?? [];
+    const meta: PaginationMeta = res.meta ?? {
+      page: safePage,
+      limit: safeLimit,
+      total: items.length,
+      totalPages: items.length > 0 ? 1 : 0,
+    };
+    return { data: items, meta, error: false };
+  } catch {
+    return {
+      data: [],
+      meta: { page: safePage, limit: safeLimit, total: 0, totalPages: 0 },
+      error: true,
+    };
+  }
+}
+
+export async function getCachedRecruitmentById(
+  id: string,
+): Promise<CachedItemResult<RecruitmentItem>> {
+  'use cache';
+  cacheLife({ stale: 30, revalidate: 60, expire: 3600 });
+  cacheTag('recruitments', `recruitment-${id}`);
+
+  if (!isValidObjectId(id)) {
+    return { data: null, notFound: true, error: false };
+  }
+
+  try {
+    const res = await getRecruitmentById(id);
+    if (!res.data || !res.data.isActive) {
+      return { data: null, notFound: true, error: false };
+    }
+    return { data: res.data, notFound: false, error: false };
+  } catch (err) {
+    if (err instanceof ApiError && (err.status === 404 || err.status === 400)) {
+      return { data: null, notFound: true, error: false };
+    }
+    return { data: null, notFound: false, error: true };
+  }
+}
+
+export async function getCachedRecruitmentSitemapItems(): Promise<RecruitmentItem[]> {
+  'use cache';
+  cacheLife({ stale: 30, revalidate: 60, expire: 3600 });
+  cacheTag('recruitments');
+
+  try {
+    const first = await getRecruitments({ page: 1, limit: 50 });
+    const items = [...(first.data ?? [])];
+    const totalPages = first.meta?.totalPages ?? 1;
+
+    if (totalPages >= 2) {
+      const second = await getRecruitments({ page: 2, limit: 50 });
       items.push(...(second.data ?? []));
     }
 

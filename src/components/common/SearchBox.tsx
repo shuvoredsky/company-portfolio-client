@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useState, type FormEvent } from 'react';
+import { useCallback, useEffect, useId, useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { Search, X } from 'lucide-react';
 import { useDebouncedValue } from '@/hooks/useDebouncedValue';
@@ -23,6 +23,7 @@ export function SearchBox({
   submitLabel,
 }: SearchBoxProps) {
   const router = useRouter();
+  const inputId = useId();
   const normalizedInitial = initialValue.trim().slice(0, 100);
   const [prevInitial, setPrevInitial] = useState(normalizedInitial);
   const [value, setValue] = useState(initialValue);
@@ -60,8 +61,7 @@ export function SearchBox({
 
   const handleClear = () => {
     setValue('');
-    const trimmed = normalizedInitial;
-    if (trimmed !== '') {
+    if (normalizedInitial !== '') {
       router.replace(basePath, { scroll: false });
     }
   };
@@ -74,7 +74,7 @@ export function SearchBox({
       onSubmit={handleSubmit}
       className="relative flex w-full max-w-md items-center"
     >
-      <label htmlFor="press-search-input" className="sr-only">
+      <label htmlFor={inputId} className="sr-only">
         {label}
       </label>
 
@@ -84,7 +84,7 @@ export function SearchBox({
       />
 
       <input
-        id="press-search-input"
+        id={inputId}
         name="search"
         type="search"
         value={value}
@@ -112,3 +112,4 @@ export function SearchBox({
     </form>
   );
 }
+

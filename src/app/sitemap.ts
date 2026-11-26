@@ -1,6 +1,10 @@
 import type { MetadataRoute } from 'next';
 import { siteConfig } from '@/config/site';
-import { getCachedPressSitemapItems } from '@/lib/api/server';
+import {
+  getCachedNetworkSitemapItems,
+  getCachedPressSitemapItems,
+  getCachedRecruitmentSitemapItems,
+} from '@/lib/api/server';
 import { buildLocalizedPath, LOCALES } from '@/lib/i18n/config';
 
 const STATIC_ROUTES = [
@@ -12,30 +16,15 @@ const STATIC_ROUTES = [
   '/recruitment',
 ] as const;
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const entries: MetadataRoute.Sitemap = [];
-  const now = new Date();
-
-  for (const route of STATIC_ROUTES) {
-    for (const lang of LOCALES) {
-      entries.push({
-        url: `${siteConfig.url}${buildLocalizedPath(lang, route)}`,
-        lastModified: now,
-        changeFrequency: route === '/' || route === '/press' ? 'daily' : 'weekly',
-        priority: route === '/' ? 1 : 0.8,
-        alternates: {
-          languages: {
-            en: `${siteConfig.url}${buildLocalizedPath('en', route)}`,
-            it: `${siteConfig.url}${buildLocalizedPath('it', route)}`,
-          },
-        },
-      });
-    }
-  }
-
-  const pressItems = await getCachedPressSitemapItems();
-  for (const item of pressItems) {
-    const route = `/press/${item._id}`;
+function appendLocalizedItemEntries(
+  entries: MetadataRoute.Sitemap,
+  prefix: string,
+  items: { _id: string; createdAt?: string; updatedAt?: string }[],
+  now: Date,
+  priority: number,
+): void {
+  for (const item of items) {
+    const route = `${prefix}/${item._id}`;
     const lastModified = item.updatedAt
       ? new Date(item.updatedAt)
       : item.createdAt
@@ -47,7 +36,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         url: `${siteConfig.url}${buildLocalizedPath(lang, route)}`,
         lastModified,
         changeFrequency: 'weekly',
-        priority: 0.7,
+        priority,
         alternates: {
           languages: {
             en: `${siteConfig.url}${buildLocalizedPath('en', route)}`,
@@ -57,6 +46,41 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       });
     }
   }
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const entries: MetadataRoute.Sitemap = [];
+  const now = new Date();
+
+  for (const route of STATIC_ROUTES) {
+    for (const lang of LOCALES) {
+      entries.push({
+        url: `${siteConfig.url}${buildLocalizedPath(lang, route)}`,
+        lastModified: now,
+        changeFrequency:
+          route === '/' || route === '/press' || route === '/network'
+            ? 'daily'
+            : 'weekly',
+        priority: route === '/' ? 1 : 0.8,
+        alternates: {
+          languages: {
+            en: `${siteConfig.url}${buildLocalizedPath('en', route)}`,
+            it: `${siteConfig.url}${buildLocalizedPath('it', route)}`,
+          },
+        },
+      });
+    }
+  }
+
+  const [pressItems, networkItems, recruitmentItems] = await Promise.all([
+    getCachedPressSitemapItems(),
+    getCachedNetworkSitemapItems(),
+    getCachedRecruitmentSitemapItems(),
+  ]);
+
+  appendLocalizedItemEntries(entries, '/press', pressItems, now, 0.7);
+  appendLocalizedItemEntries(entries, '/network', networkItems, now, 0.7);
+  appendLocalizedItemEntries(entries, '/recruitment', recruitmentItems, now, 0.6);
 
   return entries;
 }

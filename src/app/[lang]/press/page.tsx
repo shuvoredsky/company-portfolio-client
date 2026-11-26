@@ -7,7 +7,7 @@ import { Container } from '@/components/common/Container';
 import { PageHero } from '@/components/common/PageHero';
 import { buildPaginatedHref, Pagination } from '@/components/common/Pagination';
 import { PressCard } from '@/components/press/PressCard';
-import { SearchBox } from '@/components/press/SearchBox';
+import { SearchBox } from '@/components/common/SearchBox';
 import { Section } from '@/components/common/Section';
 import { buttonVariants } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
