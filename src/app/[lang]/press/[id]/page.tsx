@@ -92,7 +92,7 @@ async function MorePressSection({
           </LocaleLink>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3 lg:gap-6">
           {others.map((item) => (
             <PressCard
               key={item._id}

@@ -69,18 +69,18 @@ function PressListSkeleton() {
   return (
     <div className="space-y-8">
       <Skeleton className="h-11 w-full max-w-md rounded-xl" />
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3 lg:gap-6">
         {Array.from({ length: 6 }).map((_, idx) => (
           <div
             key={idx}
-            className="overflow-hidden rounded-2xl border border-border bg-card"
+            className="overflow-hidden rounded-xl border border-border bg-card sm:rounded-2xl"
           >
             <Skeleton className="aspect-[16/10] w-full rounded-none" />
-            <div className="space-y-3 p-6">
-              <Skeleton className="h-3.5 w-24" />
-              <Skeleton className="h-5 w-4/5" />
-              <Skeleton className="h-4 w-full" />
-              <Skeleton className="h-4 w-3/4" />
+            <div className="space-y-2 p-2.5 sm:space-y-3 sm:p-4 lg:p-5">
+              <Skeleton className="h-3 w-20" />
+              <Skeleton className="h-4 w-4/5 sm:h-5" />
+              <Skeleton className="h-3.5 w-full" />
+              <Skeleton className="h-3.5 w-3/4" />
             </div>
           </div>
         ))}
@@ -180,7 +180,7 @@ async function PressListContent({
         </Card>
       ) : (
         <>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3 lg:gap-6">
             {items.map((item) => (
               <PressCard
                 key={item._id}

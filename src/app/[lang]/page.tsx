@@ -46,9 +46,9 @@ function LatestPressSkeleton() {
           <Skeleton className="h-8 w-52" />
           <Skeleton className="h-5 w-80 max-w-full" />
         </div>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3 lg:gap-6">
           {Array.from({ length: 3 }).map((_, idx) => (
-            <Skeleton key={idx} className="h-80 w-full rounded-2xl" />
+            <Skeleton key={idx} className="h-60 w-full rounded-xl sm:h-72 sm:rounded-2xl" />
           ))}
         </div>
       </Container>

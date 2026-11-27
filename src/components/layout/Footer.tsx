@@ -161,70 +161,73 @@ export async function Footer({ lang, dict }: FooterProps) {
             )}
           </div>
 
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h2 className="text-sm font-semibold tracking-wider text-accent uppercase">
-              {dict.footer.quickLinksTitle}
-            </h2>
-            <ul className="space-y-2.5 text-sm">
-              {mainNavItems.map((item) => (
-                <li key={item.key}>
-                  <LocaleLink
-                    href={item.href}
-                    lang={lang}
-                    className="inline-flex min-h-8 items-center rounded text-primary-foreground/85 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                  >
-                    {dict.nav[item.key]}
-                  </LocaleLink>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Quick Links & Contact side-by-side on mobile, separate grid columns on md+ */}
+          <div className="flex items-start justify-between gap-6 md:col-span-2 md:grid md:grid-cols-2 md:gap-10">
+            {/* Quick Links */}
+            <div className="min-w-0 shrink-0 space-y-4">
+              <h2 className="text-sm font-semibold tracking-wider text-accent uppercase">
+                {dict.footer.quickLinksTitle}
+              </h2>
+              <ul className="space-y-2.5 text-sm">
+                {mainNavItems.map((item) => (
+                  <li key={item.key}>
+                    <LocaleLink
+                      href={item.href}
+                      lang={lang}
+                      className="inline-flex min-h-8 items-center rounded text-primary-foreground/85 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    >
+                      {dict.nav[item.key]}
+                    </LocaleLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Contact Details */}
-          <div className="space-y-4">
-            <h2 className="text-sm font-semibold tracking-wider text-accent uppercase">
-              {dict.footer.contactTitle}
-            </h2>
-            <ul className="space-y-3 text-sm text-primary-foreground/85">
-              {siteConfig.contact.address && (
-                <li className="flex items-start gap-2.5">
-                  <MapPin
-                    className="mt-0.5 h-4 w-4 shrink-0 text-accent"
-                    aria-hidden="true"
-                  />
-                  <span>{siteConfig.contact.address}</span>
-                </li>
-              )}
-              {siteConfig.contact.phone && (
-                <li className="flex items-center gap-2.5">
-                  <Phone
-                    className="h-4 w-4 shrink-0 text-accent"
-                    aria-hidden="true"
-                  />
-                  <a
-                    href={`tel:${siteConfig.contact.phone.replace(/\s+/g, '')}`}
-                    className="rounded transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                  >
-                    {siteConfig.contact.phone}
-                  </a>
-                </li>
-              )}
-              {siteConfig.contact.email && (
-                <li className="flex items-center gap-2.5">
-                  <Mail
-                    className="h-4 w-4 shrink-0 text-accent"
-                    aria-hidden="true"
-                  />
-                  <a
-                    href={`mailto:${siteConfig.contact.email}`}
-                    className="break-all rounded transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                  >
-                    {siteConfig.contact.email}
-                  </a>
-                </li>
-              )}
-            </ul>
+            {/* Contact Details */}
+            <div className="min-w-0 flex-1 space-y-4">
+              <h2 className="text-sm font-semibold tracking-wider text-accent uppercase">
+                {dict.footer.contactTitle}
+              </h2>
+              <ul className="space-y-3 text-sm text-primary-foreground/85">
+                {siteConfig.contact.address && (
+                  <li className="flex items-start gap-2">
+                    <MapPin
+                      className="mt-0.5 h-4 w-4 shrink-0 text-accent"
+                      aria-hidden="true"
+                    />
+                    <span className="break-words">{siteConfig.contact.address}</span>
+                  </li>
+                )}
+                {siteConfig.contact.phone && (
+                  <li className="flex items-center gap-2">
+                    <Phone
+                      className="h-4 w-4 shrink-0 text-accent"
+                      aria-hidden="true"
+                    />
+                    <a
+                      href={`tel:${siteConfig.contact.phone.replace(/\s+/g, '')}`}
+                      className="break-all rounded transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    >
+                      {siteConfig.contact.phone}
+                    </a>
+                  </li>
+                )}
+                {siteConfig.contact.email && (
+                  <li className="flex items-center gap-2">
+                    <Mail
+                      className="h-4 w-4 shrink-0 text-accent"
+                      aria-hidden="true"
+                    />
+                    <a
+                      href={`mailto:${siteConfig.contact.email}`}
+                      className="break-all rounded transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    >
+                      {siteConfig.contact.email}
+                    </a>
+                  </li>
+                )}
+              </ul>
+            </div>
           </div>
         </div>
 
