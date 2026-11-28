@@ -18,6 +18,7 @@ import { SectionHeading } from '@/components/common/SectionHeading';
 import { NetworkCard } from '@/components/network/NetworkCard';
 import { buttonVariants } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
+import { Skeleton } from '@/components/ui/Skeleton';
 import { type Locale } from '@/config/site';
 import { getNetworks } from '@/lib/api/networks';
 import {
@@ -112,7 +113,23 @@ async function MoreNetworksSection({
   );
 }
 
-export default async function NetworkDetailPage({
+function NetworkDetailSkeleton() {
+  return (
+    <Section>
+      <Container className="max-w-4xl space-y-6">
+        <Skeleton className="h-4 w-56" />
+        <Skeleton className="h-10 w-3/4" />
+        <Skeleton className="aspect-[16/9] w-full rounded-2xl" />
+        <div className="max-w-3xl space-y-3 pt-2">
+          <Skeleton className="h-4 w-full" />
+          <Skeleton className="h-4 w-5/6" />
+        </div>
+      </Container>
+    </Section>
+  );
+}
+
+async function NetworkDetailContent({
   params,
 }: {
   params: Promise<{ lang: string; id: string }>;
@@ -287,6 +304,18 @@ export default async function NetworkDetailPage({
         <MoreNetworksSection lang={lang} currentId={item._id} />
       </Suspense>
     </>
+  );
+}
+
+export default function NetworkDetailPage({
+  params,
+}: {
+  params: Promise<{ lang: string; id: string }>;
+}) {
+  return (
+    <Suspense fallback={<NetworkDetailSkeleton />}>
+      <NetworkDetailContent params={params} />
+    </Suspense>
   );
 }
 

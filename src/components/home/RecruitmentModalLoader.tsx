@@ -2,36 +2,23 @@
 
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
-import { RECRUITMENT_MODAL_SESSION_KEY } from '@/lib/routes';
+
+export const HOME_LOGO_CLICK_EVENT = 'home-logo-click';
 
 const LazyRecruitmentModal = dynamic(
   () => import('./RecruitmentModal').then((mod) => mod.RecruitmentModal),
   { ssr: false },
 );
 
-function wasSeenThisSession(): boolean {
-  try {
-    return window.sessionStorage.getItem(RECRUITMENT_MODAL_SESSION_KEY) === '1';
-  } catch {
-    return false;
-  }
-}
-
 export function RecruitmentModalLoader() {
-  const [readyToMount, setReadyToMount] = useState(false);
+  const [openKey, setOpenKey] = useState(0);
 
   useEffect(() => {
-    if (wasSeenThisSession()) {
-      return;
-    }
-
     let timerId: number | undefined;
     const scheduleOpen = () => {
       timerId = window.setTimeout(() => {
-        if (!wasSeenThisSession()) {
-          setReadyToMount(true);
-        }
-      }, 800);
+        setOpenKey((k) => k + 1);
+      }, 600);
     };
 
     if (document.readyState === 'complete') {
@@ -40,17 +27,25 @@ export function RecruitmentModalLoader() {
       window.addEventListener('load', scheduleOpen, { once: true });
     }
 
+    const handleLogoClick = () => {
+      setOpenKey((k) => k + 1);
+    };
+    window.addEventListener(HOME_LOGO_CLICK_EVENT, handleLogoClick);
+
     return () => {
       window.removeEventListener('load', scheduleOpen);
+      window.removeEventListener(HOME_LOGO_CLICK_EVENT, handleLogoClick);
       if (timerId !== undefined) {
         window.clearTimeout(timerId);
       }
+      // Reset when navigating away from Home (including Next.js 16 <Activity> hiding)
+      setOpenKey(0);
     };
   }, []);
 
-  if (!readyToMount) {
+  if (openKey === 0) {
     return null;
   }
 
-  return <LazyRecruitmentModal />;
+  return <LazyRecruitmentModal key={openKey} />;
 }

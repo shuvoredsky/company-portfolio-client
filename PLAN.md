@@ -142,6 +142,10 @@ src/
   - **Country list decision:** Uses `i18n-iso-countries` (EN/IT locales registered inside `ContactForm`, sorted with `Intl.Collator(lang)`). Displays country names in the active UI language (`Italia` / `Italy`) while always submitting the **English** country name to the API so admin records stay consistent.
   - **Prefill contract:** Reads `?position=<title>` inside `<Suspense>`, sanitizes control chars (max 200 chars), prefills the message once without overwriting user edits, and shows an `"Applying for: {title}"` banner.
   - **Honeypot & error handling:** Hidden off-screen `website` field (`tabIndex={-1}`, `aria-hidden`), double-submit prevention, 400 `errorSources` mapped to field errors, friendly 429 rate-limit message, network-error message, and generic 5xx fallback (never exposing raw server messages).
+- **Application Status (`/[lang]/application-status`):**
+  - Excluded from Navbar and `sitemap.ts`, marked `robots: noindex, nofollow`. Linked from Footer Quick Links (`footerExtraLinks` in `src/config/navigation.ts`) and from a subtle prompt on `/[lang]/recruitment`.
+  - Uses `POST /api/v1/applications/check` via `checkApplication(serialNumber)` (`src/lib/api/applications.ts`) and TanStack Query `useMutation` (`retry: false`, no caching). Serial numbers are NEVER placed in the URL/query string, logged, or stored in browser storage/cookies.
+  - Response contract: `{ serialNumber, status, maskedName, note: string | null, updatedAt }`. Displays status badge (icon + semantic token), localized explanation, masked name, localized `Last updated` date, and a `"Next steps"` plain-text section (`whitespace-pre-line break-words`) when `note` is non-null, inside the shared accessible `<Modal>`.
 - **SEO & Soft-404 Notes:**
   - Home emits `Organization` and `WebSite` JSON-LD (`<` escaped as `\u003c`).
   - `src/app/[lang]/opengraph-image.tsx` generates a localized 1200×630 branded OpenGraph/Twitter image for routes without a specific article/partner image.

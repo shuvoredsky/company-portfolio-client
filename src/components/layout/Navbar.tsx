@@ -50,6 +50,11 @@ export function Navbar() {
         <Container className="flex h-16 items-center justify-between gap-4 sm:h-18">
           <LocaleLink
             href="/"
+            onClick={() => {
+              if (typeof window !== 'undefined') {
+                window.dispatchEvent(new Event('home-logo-click'));
+              }
+            }}
             className="min-w-0 rounded-xl py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
           >
             <Brand inverted />

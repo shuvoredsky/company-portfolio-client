@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import { Brand } from '@/components/common/Brand';
 import { Container } from '@/components/common/Container';
 import { LocaleLink } from '@/components/common/LocaleLink';
-import { mainNavItems } from '@/config/navigation';
+import { footerExtraLinks, mainNavItems } from '@/config/navigation';
 import { siteConfig, type Locale } from '@/config/site';
 import { type Dictionary } from '@/lib/i18n/getDictionary';
 
@@ -177,6 +177,17 @@ export async function Footer({ lang, dict }: FooterProps) {
                       className="inline-flex min-h-8 items-center rounded text-primary-foreground/85 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                     >
                       {dict.nav[item.key]}
+                    </LocaleLink>
+                  </li>
+                ))}
+                {footerExtraLinks.map((item) => (
+                  <li key={item.key}>
+                    <LocaleLink
+                      href={item.href}
+                      lang={lang}
+                      className="inline-flex min-h-8 items-center rounded text-primary-foreground/85 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    >
+                      {dict.footer[item.key]}
                     </LocaleLink>
                   </li>
                 ))}

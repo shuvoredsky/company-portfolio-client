@@ -139,7 +139,7 @@
     "metaDescription": "Scopri le posizioni aperte presso {brand}.",
     "title": "Lavora con Noi",
     "subtitle": "Unisciti al nostro team e contribuisci al futuro dell'agricoltura sostenibile.",
-    "intro": "Esplora le posizioni aperte qui sotto. Apri una scheda per leggere tutti i dettagli del ruolo, visitare la pagina dedicata o candidarti tramite il modulo contatti.",
+    "intro": "Esplora le posizioni aperte qui sotto. Apri una scheda per leggere tutti i dettagli del ruolo o visitare la pagina dedicata.",
     "modalTitle": "Posizioni Aperte",
     "modalSubtitle": "Scopri le opportunità professionali attualmente attive in {brand}.",
     "modalDismissSession": "Non mostrare più in questa sessione",
@@ -152,6 +152,8 @@
     "backToOpenings": "Torna a tutte le posizioni",
     "otherOpeningsTitle": "Altre Posizioni Aperte",
     "contactCta": "Invia una candidatura spontanea",
+    "checkStatusPrompt": "Ti sei già candidato?",
+    "checkStatusLink": "Controlla lo stato della tua candidatura",
     "breadcrumbLabel": "Percorso di navigazione",
     "emptyTitle": "Nessuna posizione aperta al momento",
     "emptyDescription": "Al momento non ci sono ricerche attive. Puoi comunque inviarci una candidatura spontanea o un messaggio dalla pagina Contattaci.",
@@ -209,8 +211,50 @@
   "footer": {
     "tagline": "Coltiviamo crescita sostenibile, qualità e collaborazioni agricole solide.",
     "quickLinksTitle": "Link Rapidi",
+    "applicationStatusLink": "Stato Candidatura",
     "contactTitle": "Contatti",
     "rights": "Tutti i diritti riservati."
+  },
+  "applicationStatus": {
+    "metaTitle": "Stato della Candidatura",
+    "metaDescription": "Verifica lo stato attuale della tua candidatura presso {brand} usando il tuo numero di serie.",
+    "title": "Stato della Candidatura",
+    "subtitle": "Inserisci il numero di serie ricevuto via email per verificare lo stato attuale della tua candidatura.",
+    "cardTitle": "Verifica la Tua Candidatura",
+    "serialLabel": "Numero di serie",
+    "serialPlaceholder": "AB-4F7K9",
+    "serialHint": "Inserisci il codice di 5–30 caratteri ricevuto via email (lettere, numeri e trattini).",
+    "submit": "Verifica stato",
+    "checking": "Verifica in corso...",
+    "modalTitle": "Stato della Candidatura",
+    "serialDisplayLabel": "Numero di serie",
+    "applicantLabel": "Candidato",
+    "statusLabel": "Stato",
+    "lastUpdatedLabel": "Ultimo aggiornamento",
+    "nextStepsTitle": "Prossimi passi",
+    "checkAnother": "Verifica un altro codice",
+    "privacyNotice": "Qui vengono mostrate solo informazioni limitate.",
+    "statuses": {
+      "pending": {
+        "label": "In valutazione",
+        "explanation": "La tua candidatura è attualmente in fase di valutazione dal nostro team."
+      },
+      "approved": {
+        "label": "Approvata",
+        "explanation": "Congratulazioni, la tua candidatura è stata approvata."
+      },
+      "rejected": {
+        "label": "Non selezionata",
+        "explanation": "Purtroppo la tua candidatura non è stata selezionata."
+      }
+    },
+    "errors": {
+      "invalidSerial": "Inserisci un numero di serie valido (5–30 caratteri: lettere, numeri e trattini, iniziando con una lettera o una cifra).",
+      "notFound": "Nessuna candidatura trovata per questo numero di serie. Controlla il codice e riprova.",
+      "rateLimit": "Troppi tentativi di verifica, riprova tra qualche minuto.",
+      "network": "Impossibile raggiungere il server. Verifica la connessione e riprova.",
+      "generic": "Si è verificato un errore durante la verifica della candidatura. Riprova."
+    }
   },
   "errors": {
     "notFoundTitle": "Pagina non trovata",

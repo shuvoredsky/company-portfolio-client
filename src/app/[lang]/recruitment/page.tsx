@@ -169,8 +169,6 @@ async function RecruitmentListContent({
           postedOn: dict.recruitment.postedOn,
           expandDetails: dict.recruitment.expandDetails,
           collapseDetails: dict.recruitment.collapseDetails,
-          apply: dict.common.apply,
-          applyForRole: dict.recruitment.applyForRole,
           viewDetails: dict.recruitment.viewDetails,
         }}
       />
@@ -211,7 +209,20 @@ export default async function RecruitmentPage({
       />
 
       <Section>
-        <Container className="max-w-4xl">
+        <Container className="max-w-4xl space-y-6">
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 rounded-xl border border-border bg-secondary/50 px-4 py-3 text-sm text-foreground">
+            <span className="text-muted-foreground">
+              {dict.recruitment.checkStatusPrompt}
+            </span>
+            <LocaleLink
+              href="/application-status"
+              className="inline-flex min-h-10 items-center gap-1 font-semibold text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-md"
+            >
+              <span>{dict.recruitment.checkStatusLink}</span>
+              <ArrowRight className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+            </LocaleLink>
+          </div>
+
           <Suspense fallback={<RecruitmentListSkeleton />}>
             <RecruitmentListContent lang={lang} searchParams={searchParams} />
           </Suspense>

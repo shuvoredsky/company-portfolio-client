@@ -9,7 +9,6 @@ import {
   Calendar,
   ChevronRight,
   RefreshCw,
-  Send,
 } from 'lucide-react';
 import { Container } from '@/components/common/Container';
 import { LocaleLink } from '@/components/common/LocaleLink';
@@ -17,6 +16,7 @@ import { Section } from '@/components/common/Section';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { buttonVariants } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
+import { Skeleton } from '@/components/ui/Skeleton';
 import { type Locale } from '@/config/site';
 import { getRecruitments } from '@/lib/api/recruitments';
 import {
@@ -27,7 +27,6 @@ import {
 import { buildLocalizedPath, isValidLocale } from '@/lib/i18n/config';
 import { formatDate, interpolate } from '@/lib/i18n/format';
 import { getDictionary } from '@/lib/i18n/getDictionary';
-import { buildApplyContactPath } from '@/lib/routes';
 import { buildExcerpt, buildPageMetadata } from '@/lib/seo';
 
 const FALLBACK_STATIC_ID = '000000000000000000000000';
@@ -127,7 +126,24 @@ async function OtherOpeningsSection({
   );
 }
 
-export default async function RecruitmentDetailPage({
+function RecruitmentDetailSkeleton() {
+  return (
+    <Section>
+      <Container className="max-w-4xl space-y-6">
+        <Skeleton className="h-4 w-56" />
+        <Skeleton className="h-4 w-32" />
+        <Skeleton className="h-10 w-3/4" />
+        <div className="max-w-3xl space-y-3 pt-2">
+          <Skeleton className="h-4 w-full" />
+          <Skeleton className="h-4 w-full" />
+          <Skeleton className="h-4 w-5/6" />
+        </div>
+      </Container>
+    </Section>
+  );
+}
+
+async function RecruitmentDetailContent({
   params,
 }: {
   params: Promise<{ lang: string; id: string }>;
@@ -183,7 +199,6 @@ export default async function RecruitmentDetailPage({
     );
   }
 
-  const applyHref = buildLocalizedPath(lang, buildApplyContactPath(item.title));
   const formattedDate = formatDate(item.createdAt, lang);
 
   return (
@@ -240,15 +255,6 @@ export default async function RecruitmentDetailPage({
             </div>
 
             <div className="flex flex-wrap items-center gap-3 border-t border-border pt-6">
-              <Link
-                href={applyHref}
-                aria-label={interpolate(dict.recruitment.applyForRole, { title: item.title })}
-                className={buttonVariants({ variant: 'primary', size: 'lg' })}
-              >
-                <Send className="h-4 w-4 shrink-0" aria-hidden="true" />
-                <span>{dict.common.apply}</span>
-              </Link>
-
               <LocaleLink
                 href="/recruitment"
                 className={buttonVariants({ variant: 'outline', size: 'lg' })}
@@ -265,6 +271,18 @@ export default async function RecruitmentDetailPage({
         <OtherOpeningsSection lang={lang} currentId={item._id} />
       </Suspense>
     </>
+  );
+}
+
+export default function RecruitmentDetailPage({
+  params,
+}: {
+  params: Promise<{ lang: string; id: string }>;
+}) {
+  return (
+    <Suspense fallback={<RecruitmentDetailSkeleton />}>
+      <RecruitmentDetailContent params={params} />
+    </Suspense>
   );
 }
 

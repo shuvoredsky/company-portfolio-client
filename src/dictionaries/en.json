@@ -139,7 +139,7 @@
     "metaDescription": "Explore current career opportunities at {brand}.",
     "title": "Careers",
     "subtitle": "Join our team and help shape the future of sustainable agriculture.",
-    "intro": "Explore our active openings below. Expand any position to read the full role details, view the dedicated page, or apply directly through our contact form.",
+    "intro": "Explore our active openings below. Expand any position to read the full role details or view the dedicated page.",
     "modalTitle": "We Are Hiring",
     "modalSubtitle": "Explore current open positions at {brand}.",
     "modalDismissSession": "Don't show again this session",
@@ -152,6 +152,8 @@
     "backToOpenings": "Back to all openings",
     "otherOpeningsTitle": "Other Openings",
     "contactCta": "Send a general inquiry",
+    "checkStatusPrompt": "Already applied?",
+    "checkStatusLink": "Check your application status",
     "breadcrumbLabel": "Breadcrumb",
     "emptyTitle": "No open positions right now",
     "emptyDescription": "We currently have no active openings. Feel free to send us a spontaneous inquiry or CV through our Contact Us page.",
@@ -209,8 +211,50 @@
   "footer": {
     "tagline": "Cultivating sustainable growth, quality, and trusted agricultural partnerships.",
     "quickLinksTitle": "Quick Links",
+    "applicationStatusLink": "Application Status",
     "contactTitle": "Contact",
     "rights": "All rights reserved."
+  },
+  "applicationStatus": {
+    "metaTitle": "Application Status",
+    "metaDescription": "Check the current review status of your application at {brand} using your serial number.",
+    "title": "Application Status",
+    "subtitle": "Enter the serial number sent to you by email to view your current application status.",
+    "cardTitle": "Check Your Application",
+    "serialLabel": "Serial number",
+    "serialPlaceholder": "AB-4F7K9",
+    "serialHint": "Use the 5–30 character serial number from your email (letters, numbers, and hyphens).",
+    "submit": "Check status",
+    "checking": "Checking...",
+    "modalTitle": "Application Status",
+    "serialDisplayLabel": "Serial number",
+    "applicantLabel": "Applicant",
+    "statusLabel": "Status",
+    "lastUpdatedLabel": "Last updated",
+    "nextStepsTitle": "Next steps",
+    "checkAnother": "Check another",
+    "privacyNotice": "Only limited information is shown here.",
+    "statuses": {
+      "pending": {
+        "label": "Pending",
+        "explanation": "Your application is currently being reviewed by our team."
+      },
+      "approved": {
+        "label": "Approved",
+        "explanation": "Congratulations, your application has been approved."
+      },
+      "rejected": {
+        "label": "Rejected",
+        "explanation": "Unfortunately your application was not successful."
+      }
+    },
+    "errors": {
+      "invalidSerial": "Please enter a valid serial number (5–30 characters: A–Z, 0–9, hyphens, starting with a letter or digit).",
+      "notFound": "No application found for this serial number. Please check the number and try again.",
+      "rateLimit": "Too many checks, please try again in a few minutes.",
+      "network": "Cannot reach the server. Please check your connection and try again.",
+      "generic": "Something went wrong while checking your application. Please try again."
+    }
   },
   "errors": {
     "notFoundTitle": "Page not found",

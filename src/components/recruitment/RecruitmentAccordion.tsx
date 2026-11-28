@@ -2,22 +2,19 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Calendar, ChevronDown, Send } from 'lucide-react';
+import { ArrowRight, Calendar, ChevronDown } from 'lucide-react';
 import { buttonVariants } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
 import { type Locale } from '@/config/site';
 import { type RecruitmentItem } from '@/lib/api/types';
 import { buildLocalizedPath } from '@/lib/i18n/config';
 import { formatDate, interpolate } from '@/lib/i18n/format';
-import { buildApplyContactPath } from '@/lib/routes';
 import { cn } from '@/lib/utils';
 
 export interface RecruitmentAccordionLabels {
   postedOn: string;
   expandDetails: string;
   collapseDetails: string;
-  apply: string;
-  applyForRole: string;
   viewDetails: string;
 }
 
@@ -70,7 +67,6 @@ export function RecruitmentAccordion({
         const headingId = `recruitment-heading-${item._id}`;
         const panelId = `recruitment-panel-${item._id}`;
         const detailHref = buildLocalizedPath(lang, `/recruitment/${item._id}`);
-        const applyHref = buildLocalizedPath(lang, buildApplyContactPath(item.title));
         const formattedDate = formatDate(item.createdAt, lang);
 
         return (
@@ -152,15 +148,6 @@ export function RecruitmentAccordion({
                       </p>
 
                       <div className="flex flex-wrap items-center gap-3">
-                        <Link
-                          href={applyHref}
-                          aria-label={interpolate(labels.applyForRole, { title: item.title })}
-                          className={buttonVariants({ variant: 'primary', size: 'md' })}
-                        >
-                          <Send className="h-4 w-4 shrink-0" aria-hidden="true" />
-                          <span>{labels.apply}</span>
-                        </Link>
-
                         <Link
                           href={detailHref}
                           className={buttonVariants({ variant: 'outline', size: 'md' })}

@@ -11,6 +11,7 @@ import { SectionHeading } from '@/components/common/SectionHeading';
 import { PressCard } from '@/components/press/PressCard';
 import { buttonVariants } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
+import { Skeleton } from '@/components/ui/Skeleton';
 import { siteConfig, type Locale } from '@/config/site';
 import { getPressList } from '@/lib/api/blogs';
 import {
@@ -107,7 +108,23 @@ async function MorePressSection({
   );
 }
 
-export default async function PressDetailPage({
+function PressDetailSkeleton() {
+  return (
+    <Section>
+      <Container className="max-w-4xl space-y-6">
+        <Skeleton className="h-4 w-56" />
+        <Skeleton className="h-10 w-3/4" />
+        <Skeleton className="aspect-[16/9] w-full rounded-2xl" />
+        <div className="max-w-3xl space-y-3 pt-2">
+          <Skeleton className="h-4 w-full" />
+          <Skeleton className="h-4 w-5/6" />
+        </div>
+      </Container>
+    </Section>
+  );
+}
+
+async function PressDetailContent({
   params,
 }: {
   params: Promise<{ lang: string; id: string }>;
@@ -259,5 +276,17 @@ export default async function PressDetailPage({
         <MorePressSection lang={lang} currentId={item._id} />
       </Suspense>
     </>
+  );
+}
+
+export default function PressDetailPage({
+  params,
+}: {
+  params: Promise<{ lang: string; id: string }>;
+}) {
+  return (
+    <Suspense fallback={<PressDetailSkeleton />}>
+      <PressDetailContent params={params} />
+    </Suspense>
   );
 }

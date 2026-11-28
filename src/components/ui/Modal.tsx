@@ -103,7 +103,12 @@ export function Modal({
         onClick={() => {
           if (closeOnOverlayClick) onClose();
         }}
-        className="fixed inset-0 bg-foreground/45 backdrop-blur-xs"
+        className={cn(
+          'fixed inset-0',
+          variant === 'glass'
+            ? 'bg-foreground/25 backdrop-blur-[2px]'
+            : 'bg-foreground/45 backdrop-blur-xs',
+        )}
       />
 
       <div

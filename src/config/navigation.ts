@@ -16,3 +16,17 @@ export const mainNavItems: readonly MainNavItem[] = [
   { key: 'contact', href: '/contact' },
 ] as const;
 
+export type FooterExtraKey = 'applicationStatusLink';
+
+export interface FooterExtraItem {
+  key: FooterExtraKey;
+  href: string;
+}
+
+/**
+ * Extra links shown only in the Footer Quick Links section (excluded from main Navbar).
+ */
+export const footerExtraLinks: readonly FooterExtraItem[] = [
+  { key: 'applicationStatusLink', href: '/application-status' },
+] as const;
+

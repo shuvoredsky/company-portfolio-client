@@ -106,3 +106,13 @@ export interface ContactSubmitResult {
   createdAt?: string;
 }
 
+export type ApplicationStatus = 'pending' | 'approved' | 'rejected';
+
+export interface ApplicationCheckResult {
+  serialNumber: string;
+  status: ApplicationStatus;
+  maskedName: string;
+  note: string | null;
+  updatedAt: string;
+}
+

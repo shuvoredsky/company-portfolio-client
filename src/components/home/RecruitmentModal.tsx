@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { ArrowRight, Briefcase } from 'lucide-react';
 import { LocaleLink } from '@/components/common/LocaleLink';
@@ -10,18 +10,7 @@ import { getRecruitments } from '@/lib/api/recruitments';
 import { interpolate } from '@/lib/i18n/format';
 import { useDictionary } from '@/lib/i18n/LanguageContext';
 import { queryKeys } from '@/lib/queryKeys';
-import {
-  buildRecruitmentItemPath,
-  RECRUITMENT_MODAL_SESSION_KEY,
-} from '@/lib/routes';
-
-function markModalSeen(): void {
-  try {
-    window.sessionStorage.setItem(RECRUITMENT_MODAL_SESSION_KEY, '1');
-  } catch {
-    // Ignore storage errors (private browsing / restricted storage)
-  }
-}
+import { buildRecruitmentItemPath } from '@/lib/routes';
 
 export function RecruitmentModal() {
   const dict = useDictionary();
@@ -38,18 +27,11 @@ export function RecruitmentModal() {
   const recruitments = data?.data ?? [];
   const shouldShow = !closed && !isError && recruitments.length > 0;
 
-  useEffect(() => {
-    if (shouldShow) {
-      markModalSeen();
-    }
-  }, [shouldShow]);
-
   if (!shouldShow) {
     return null;
   }
 
   const handleClose = () => {
-    markModalSeen();
     setClosed(true);
   };
 
@@ -87,7 +69,7 @@ export function RecruitmentModal() {
           {recruitments.map((item) => (
             <li
               key={item._id}
-              className="rounded-xl border border-border/80 bg-card/80 p-3.5 transition-colors hover:border-primary/40"
+              className="rounded-xl border border-primary/15 bg-card/55 p-3.5 backdrop-blur-md transition-colors hover:border-primary/40 hover:bg-card/75"
             >
               <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                 <div className="min-w-0 flex-1 space-y-1">
@@ -102,7 +84,7 @@ export function RecruitmentModal() {
                 <LocaleLink
                   href={buildRecruitmentItemPath(item._id)}
                   onClick={handleClose}
-                  className="inline-flex min-h-10 shrink-0 items-center gap-1 rounded-lg px-2 text-xs font-semibold text-primary transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:text-sm"
+                  className="inline-flex min-h-10 shrink-0 items-center gap-1 rounded-lg px-2 text-xs font-semibold text-primary transition-colors hover:bg-secondary/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:text-sm"
                 >
                   <span>{dict.common.learnMore}</span>
                   <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
